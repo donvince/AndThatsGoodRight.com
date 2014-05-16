@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Hello World</title>
+    <style type="text/css">
+        #container
+        {
+            position: relative;
+        }
+        #imageTemp
+        {
+            position: absolute;
+            top: 1px;
+            left: 1px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="imageView" width="600" height="500">
+    </canvas>
+    <script type="text/javascript">
+
+        function stick_man() {
+
+            var canvas, context, canvaso, contexto;
+            canvaso = document.getElementById('imageView');
+            context = canvaso.getContext('2d');
+            context.lineWidth = 5;
+
+            var headsize = 76;
+            var headX = 156;
+            var headY = 113;
+            var bodyLength = 100;
+
+
+            //Head
+            context.strokeStyle = '#000000';
+            context.save();
+            context.translate(headX, headY);
+            context.beginPath();
+            context.arc(0, 0, headsize, 0, 2 * Math.PI);
+            context.stroke();
+            context.closePath();
+            context.restore();
+
+            //Left eye
+            context.strokeStyle = '#000000';
+            context.save();
+            context.translate(headX, headY);
+            context.beginPath();
+            context.arc(-headsize / 3, -headsize / 2, 16, 0, 2 * Math.PI);
+            context.stroke();
+            context.closePath();
+            context.restore();
+
+            //Right eye
+            context.strokeStyle = '#000000';
+            context.save();
+            context.translate(headX, headY);
+            context.beginPath();
+            context.arc(headsize / 3, -headsize / 2, 16, 0, 2 * Math.PI);
+            context.stroke();
+            context.closePath();
+            context.restore();
+
+            //Mouth
+            context.strokeStyle = '#000000';
+            context.save();
+            context.translate(headX, headY);
+            context.beginPath();
+            context.moveTo(-headsize / 2, headsize / 6);
+            context.lineTo(headsize / 3, headsize / 3);
+            context.stroke();
+            context.closePath();
+            context.restore();
+
+            //Body
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(headX, headY + headsize);
+            context.lineTo(152, 397); context.stroke();
+            context.closePath();
+
+            //Right leg
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(148, 395);
+            context.lineTo(221, 453);
+            context.stroke();
+            context.closePath();
+
+            //Left leg
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(99, 448);
+            context.lineTo(152, 398);
+            context.stroke();
+            context.closePath();
+
+            //Left arm
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(88, 238);
+            context.lineTo(152, 247);
+            context.stroke();
+            context.closePath();
+
+            //Right arm
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(152, 247);
+            context.lineTo(227, 198);
+            context.stroke();
+            context.closePath();
+
+            //Hair
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(216, 37);
+            context.lineTo(199, 66);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(193, 58);
+            context.lineTo(197, 29);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(185, 49);
+            context.lineTo(180, 26);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(170, 52);
+            context.lineTo(180, 32);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(160, 49);
+            context.lineTo(163, 26);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(150, 51);
+            context.lineTo(150, 29);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(137, 44);
+            context.lineTo(136, 27);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(130, 48);
+            context.lineTo(124, 35);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(120, 51);
+            context.lineTo(115, 32);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(109, 57);
+            context.lineTo(106, 41);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(99, 60);
+            context.lineTo(95, 46);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(94, 68);
+            context.lineTo(87, 51);
+            context.stroke();
+            context.closePath();
+
+        }
+
+        stick_man()
+    </script>
+</body>
+</html>
