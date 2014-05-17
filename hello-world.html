@@ -16,15 +16,15 @@
     </style>
 </head>
 <body>
+
+
     <canvas id="imageView" width="600" height="500">
     </canvas>
     <script type="text/javascript">
 
-        function stick_man() {
+        function stick_man(context) {
 
-            var canvas, context, canvaso, contexto;
-            canvaso = document.getElementById('imageView');
-            context = canvaso.getContext('2d');
+            
             context.lineWidth = 5;
 
             var headsize = 76;
@@ -229,7 +229,11 @@
 
         }
 
-        stick_man()
+        var context, canvaso;
+        canvaso = document.getElementById('imageView');
+        context = canvaso.getContext('2d');
+
+        stick_man(context)
     </script>
 </body>
 </html>
