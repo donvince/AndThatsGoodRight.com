@@ -34,6 +34,7 @@
             //TODO: legLength and armLength aren't really being used as a length, should probably use rotate() to make life easier
             var legLength = 50;
             var armLength = 70;
+            var hairLength = 20;
 
 
             //Head
@@ -117,6 +118,30 @@
             context.stroke();
             context.closePath();
 
+            //drawOriginalHair(context);
+
+            for (var hairPos = 130; hairPos <= 220; hairPos += 7.5) {
+
+                var waggle = Math.random() * 20;
+                var wiggle = Math.random() * 10;
+
+                context.strokeStyle = 'Brown';
+                context.save();
+                context.translate(headX, headY);
+                //left = 130
+                //right = 220
+                context.rotate(hairPos * Math.PI / 180);
+                context.beginPath();
+                context.moveTo(0 + waggle, headsize);
+                context.lineTo(0 + wiggle, headsize + hairLength);
+                context.stroke();
+                context.closePath();
+                context.restore();
+
+            }
+        }
+
+        function drawOriginalHair(context) {
             //Hair
             context.strokeStyle = '#000000';
             context.beginPath();
