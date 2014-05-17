@@ -13,14 +13,43 @@
             top: 1px;
             left: 1px;
         }
+        #canvas-container
+        {
+            width: 100%;
+            text-align: center;
+        }
+        canvas
+        {
+            display: inline;
+        }
+        #text-container
+        {
+            width: 100%;
+            text-align: center;
+        }
+        #button-container
+        {
+            width: 100%;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <canvas id="imageView" width="600" height="500">
-    </canvas>
+    <div id="canvas-container">
+        <canvas id="imageView" width="400" height="400">
+        </canvas>
+    </div>
+    <div id="text-container">
+        <textarea rows="5" cols="30" id="speech-text">Hello World!</textarea>
+    </div>
+    <div id="button-container">
+        <button onclick="update()">
+            Update image</button>
+    </div>
     <script type="text/javascript">
 
         function drawBubble(ctx, x, y, w, h, radius, hook) {
+            //http://www.scriptol.com/html5/canvas/speech-bubble.php
             var r = x + w;
             var b = y + h;
 
@@ -60,22 +89,15 @@
             ctx.stroke();
             ctx.closePath();
         }
-        function dispQuote() {
-            var canvas = document.getElementById('canvas1');
-            var ctx = canvas.getContext('2d');
-            drawBubble(ctx, 10, 60, 220, 90, 20);
-        }
-        //window.onload = dispQuote;
 
 
-        function stick_man(context, x, y) {
+
+        function stickMan(context, x, y) {
 
 
             context.lineWidth = 5;
 
             var headsize = 40;
-            //var headX = 156;
-            //var headY = 113;
             var headX = x;
             var headY = y;
             var bodyLength = 100;
@@ -277,18 +299,33 @@
 
         }
 
-        var context, canvaso;
-        canvaso = document.getElementById('imageView');
-        context = canvaso.getContext('2d');
+        function update() {
+            var context, canvaso, text;
+            canvaso = document.getElementById('imageView');
+            context = canvaso.getContext('2d');
+            text = document.getElementById('speech-text').value;
+
+            context.beginPath();
+            context.rect(0, 0, canvaso.width, canvaso.height);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 7;
+            context.strokeStyle = 'black';
+            context.stroke();
 
 
-        stick_man(context, 250, 200);
 
-        drawBubble(context, 10, 10, 220, 90, 10, 'BottomRight');
+            stickMan(context, 250, 200);
 
-        context.fillStyle = "blue";
-        context.font = "bold 16px Arial";
-        context.fillText("Hello World!", 70, 40);
+            drawBubble(context, 10, 10, 220, 90, 10, 'BottomRight');
+
+            context.fillStyle = "blue";
+            context.font = "bold 16px Arial";
+            context.textAlign = 'center';
+            context.fillText(text, 110, 40);
+        }
+
+        update();
     </script>
 </body>
 </html>
