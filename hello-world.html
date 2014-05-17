@@ -30,7 +30,10 @@
             var headsize = 76;
             var headX = 156;
             var headY = 113;
-            var bodyLength = 100;
+            var bodyLength = 200;
+            //TODO: legLength and armLength aren't really being used as a length, should probably use rotate() to make life easier
+            var legLength = 50;
+            var armLength = 70;
 
 
             //Head
@@ -78,38 +81,39 @@
             context.strokeStyle = '#000000';
             context.beginPath();
             context.moveTo(headX, headY + headsize);
-            context.lineTo(152, 397); context.stroke();
+            context.lineTo(headX, headY + headsize + bodyLength);
+            context.stroke();
             context.closePath();
 
             //Right leg
             context.strokeStyle = '#000000';
             context.beginPath();
-            context.moveTo(148, 395);
-            context.lineTo(221, 453);
+            context.moveTo(headX, headY + headsize + bodyLength);
+            context.lineTo(headX + legLength, headY + headsize + bodyLength + legLength);
             context.stroke();
             context.closePath();
 
             //Left leg
             context.strokeStyle = '#000000';
             context.beginPath();
-            context.moveTo(99, 448);
-            context.lineTo(152, 398);
+            context.moveTo(headX, headY + headsize + bodyLength);
+            context.lineTo(headX - legLength, headY + headsize + bodyLength + legLength);
             context.stroke();
             context.closePath();
 
             //Left arm
             context.strokeStyle = '#000000';
             context.beginPath();
-            context.moveTo(88, 238);
-            context.lineTo(152, 247);
+            context.moveTo(headX, headY + headsize + (bodyLength / 4));
+            context.lineTo(headX - armLength, headY + headsize + (bodyLength / 4));
             context.stroke();
             context.closePath();
 
             //Right arm
             context.strokeStyle = '#000000';
             context.beginPath();
-            context.moveTo(152, 247);
-            context.lineTo(227, 198);
+            context.moveTo(headX, headY + headsize + (bodyLength / 4));
+            context.lineTo(headX + armLength, headY + headsize + (bodyLength / 14));
             context.stroke();
             context.closePath();
 
