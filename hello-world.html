@@ -327,20 +327,41 @@
             //context.rect(0, 0, canvaso.width, canvaso.height);
             drawPanel(context, canvaso.width, canvaso.height);
 
+//********** First Panel
 
             stickMan(context, 100, 200, 'Brown');
             stickMan(context, 300, 200, 'Gold');
-            stickMan(context, 500, 200, 'Brown');
-            stickMan(context, 700, 200, 'Gold');
-            stickMan(context, 900, 200, 'Brown');
-            stickMan(context, 1100, 200, 'Gold');
 
-            drawBubble(context, 10, 10, 220, 90, 10, 'BottomRight');
+            drawBubble(context, 100, 10, 250, 90, 10, 'BottomLeft');
 
             context.fillStyle = "blue";
             context.font = "bold 16px Arial";
-            context.textAlign = 'center';
-            context.fillText(text, 110, 40);
+            context.textAlign = 'left';
+            context.fillText("I need you to design me ", 110, 40);
+            context.fillText("something generic", 110, 60);
+
+//********** Second Panel
+
+            stickMan(context, 500, 200, 'Brown');
+            stickMan(context, 700, 200, 'Gold');
+
+//********** Third Panel
+
+            stickMan(context, 900, 200, 'Brown');
+            stickMan(context, 1100, 200, 'Gold');
+
+
+
+
+//Panel 1: Character 1: I need you to design me something generic
+//Panel 2: Character 2: here you go, all done.
+//                 Character1: but I’ve not given you the requirements yet. How do you use it?
+//Panel 3: Character 2: You tell me, I don’t know what it is. What is it?
+
+
+
+
+
         }
 
         update();
