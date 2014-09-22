@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Hello World</title>
+    <title>..right? Magic Design</title>
     <style type="text/css">
         #container
         {
@@ -33,19 +33,7 @@
             text-align: center;
         }
     </style>
-</head>
-<body>
-    <div id="canvas-container">
-        <canvas id="imageView" width="1200" height="400">
-        </canvas>
-    </div>
-    <div id="text-container">
-        <textarea rows="5" cols="30" id="speech-text">Hello World!</textarea>
-    </div>
-    <div id="button-container">
-        <button onclick="update()">
-            Update image</button>
-    </div>
+
     <script type="text/javascript">
 
         function drawBubble(ctx, x, y, w, h, radius, hook) {
@@ -322,7 +310,7 @@
             var context, canvaso, text;
             canvaso = document.getElementById('imageView');
             context = canvaso.getContext('2d');
-            text = document.getElementById('speech-text').value;
+            //text = document.getElementById('speech-text').value;
 
             //context.rect(0, 0, canvaso.width, canvaso.height);
             drawPanel(context, canvaso.width, canvaso.height);
@@ -393,7 +381,24 @@
 
         }
 
-        update();
+        window.onload = function () { update(); };
+
+
+        
     </script>
+
+
+
+
+</head>
+<body>
+    <div id="canvas-container">
+        <canvas id="imageView" width="1200" height="400">
+        </canvas>
+    </div>
+    <div id="text-container">
+        <p>... and that's good right?</p>
+    </div>
+    
 </body>
 </html>
