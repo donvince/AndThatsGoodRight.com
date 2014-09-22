@@ -92,7 +92,7 @@
 
 
 
-        function stickMan(context, x, y) {
+        function stickMan(context, x, y, hairColour) {
 
 
             context.lineWidth = 5;
@@ -195,7 +195,7 @@
                 var waggle = Math.random() * 20;
                 var wiggle = Math.random() * 10;
 
-                context.strokeStyle = 'Brown';
+                context.strokeStyle = hairColour;
                 context.save();
                 context.translate(headX, headY);
                 //left = 130
@@ -328,7 +328,12 @@
             drawPanel(context, canvaso.width, canvaso.height);
 
 
-            stickMan(context, 250, 200);
+            stickMan(context, 100, 200, 'Brown');
+            stickMan(context, 300, 200, 'Gold');
+            stickMan(context, 500, 200, 'Brown');
+            stickMan(context, 700, 200, 'Gold');
+            stickMan(context, 900, 200, 'Brown');
+            stickMan(context, 1100, 200, 'Gold');
 
             drawBubble(context, 10, 10, 220, 90, 10, 'BottomRight');
 
