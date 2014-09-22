@@ -36,7 +36,7 @@
 </head>
 <body>
     <div id="canvas-container">
-        <canvas id="imageView" width="400" height="400">
+        <canvas id="imageView" width="1200" height="400">
         </canvas>
     </div>
     <div id="text-container">
@@ -299,20 +299,33 @@
 
         }
 
+        function drawPanel(context, width, height) {
+            var p = width / 3;//panelWidth
+            var b = 5; //border
+            for (var i = 0; i <= 3; i++) {
+                drawBox(context, i * p + b, (b / 2), p - b * 2, height - b);
+            };
+
+        }
+
+        function drawBox(context, x, y, w, h) {
+            context.beginPath();
+            context.rect(x, y, w, h);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 3;
+            context.strokeStyle = 'black';
+            context.stroke();            
+        }
+
         function update() {
             var context, canvaso, text;
             canvaso = document.getElementById('imageView');
             context = canvaso.getContext('2d');
             text = document.getElementById('speech-text').value;
 
-            context.beginPath();
-            context.rect(0, 0, canvaso.width, canvaso.height);
-            context.fillStyle = 'white';
-            context.fill();
-            context.lineWidth = 7;
-            context.strokeStyle = 'black';
-            context.stroke();
-
+            //context.rect(0, 0, canvaso.width, canvaso.height);
+            drawPanel(context, canvaso.width, canvaso.height);
 
 
             stickMan(context, 250, 200);
