@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>..right? Magic Design</title>
+    <title>..right? Tiny Haiku</title>
     <link rel="icon" type="image/png" href="../favicon.png" />
     <style type="text/css">
         #container
@@ -393,6 +393,17 @@ ul.nav {
             context.textAlign = 'left';
             context.fillText("'I have a tiny cock'", 1025, 80);
 
+            context.fillStyle = "grey";
+            context.font = "14px Arial";
+            context.fillText("AndThatsGoodRight.com", 1025, 427);
+
+            //"Lucida Console", Monaco, monospace
+            context.rotate(-Math.PI/2);
+            context.textAlign = "Left";
+            context.fillStyle = "black";
+            context.font = "7px Lucida Console";
+            context.fillText("'Tiny Haiku' © 2014-09-29", -438, 402.5);
+
 /*
 Panel 1
 Left char: I have a haiku I want tattooed on my foreskin.
@@ -423,7 +434,7 @@ I had to shorten it to "I have a tiny cock"
 </head>
 <body>
     <div id="canvas-container">
-        <canvas id="imageView" width="1200" height="400">
+        <canvas id="imageView" width="1200" height="440">
         </canvas>
     </div>
 
