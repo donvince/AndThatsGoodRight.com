@@ -1,0 +1,432 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>..right? Best Design ever</title>
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <style type="text/css">
+        #container
+        {
+            position: relative;
+        }
+        #imageTemp
+        {
+            position: absolute;
+            top: 1px;
+            left: 1px;
+        }
+        #canvas-container
+        {
+            width: 100%;
+            text-align: center;
+        }
+        canvas
+        {
+            display: inline;
+        }
+        #text-container
+        {
+            width: 100%;
+            text-align: center;
+        }
+        #button-container
+        {
+            width: 100%;
+            text-align: center;
+        }
+
+        ul.nav li a {
+font-family: Arial, Helvetica, sans-serif;
+background-color: #000;
+color: #FFF;
+border: 2.5px solid #333;
+padding: 2.5px 16px;
+margin: 0 4px;
+//border-radius: 3px;
+box-shadow: 7px 7px 5px 0px rgba(50, 50, 50, 0.75);
+}
+
+li {
+display: inline;
+list-style-type: none;
+padding-right: 20px;
+
+
+}
+ul.nav {
+    margin-left: auto;
+    margin-right: auto;
+    width: 25em
+
+}
+    </style>
+
+    <script type="text/javascript">
+
+        function drawBubble(ctx, x, y, w, h, radius, hook) {
+            //http://www.scriptol.com/html5/canvas/speech-bubble.php
+            var r = x + w;
+            var b = y + h;
+
+            if ("|TopLeft|TopRight|BottomLeft|BottomRight|".indexOf(hook) === -1) {
+                hook = "TopLeft";
+            }
+
+
+            ctx.beginPath();
+            ctx.strokeStyle = "black";
+            ctx.lineWidth = "2";
+            ctx.moveTo(x + radius, y);
+            if (hook === "TopLeft") {
+                ctx.lineTo(x + radius / 2, y - 10);
+                ctx.lineTo(x + radius * 2, y);
+            }
+            if (hook === "TopRight") {
+                ctx.lineTo(r - radius * 2, y);
+                ctx.lineTo(r - radius / 2, y - 10);
+            }
+            ctx.lineTo(r - radius, y);
+            ctx.quadraticCurveTo(r, y, r, y + radius);
+            ctx.lineTo(r, y + h - radius);
+            ctx.quadraticCurveTo(r, b, r - radius, b);
+            if (hook === "BottomRight") {
+                ctx.lineTo(r - radius / 2, b + 10);
+                ctx.lineTo(r - radius * 2, b);
+            }
+            if (hook === "BottomLeft") {
+                ctx.lineTo(x + radius * 2, b);
+                ctx.lineTo(x + radius / 2, b + 10);
+            }
+            ctx.lineTo(x + radius, b);
+            ctx.quadraticCurveTo(x, b, x, b - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.stroke();
+            ctx.closePath();
+        }
+
+
+
+        function stickMan(context, x, y, hairColour) {
+
+
+            context.lineWidth = 5;
+
+            var headsize = 40;
+            var headX = x;
+            var headY = y;
+            var bodyLength = 100;
+            //TODO: legLength and armLength aren't really being used as a length, should probably use rotate() to make life easier
+            var legLength = 50;
+            var armLength = 70;
+            var hairLength = 20;
+
+
+            //Head
+            context.strokeStyle = '#000000';
+            context.save();
+            context.translate(headX, headY);
+            context.beginPath();
+            context.arc(0, 0, headsize, 0, 2 * Math.PI);
+            context.stroke();
+            context.closePath();
+            context.restore();
+
+            //Left eye
+            context.strokeStyle = '#000000';
+            context.save();
+            context.translate(headX, headY);
+            context.beginPath();
+            context.arc(-headsize / 3, -headsize / 2, headsize * 0.2, 0, 2 * Math.PI);
+            context.stroke();
+            context.closePath();
+            context.restore();
+
+            //Right eye
+            context.strokeStyle = '#000000';
+            context.save();
+            context.translate(headX, headY);
+            context.beginPath();
+            context.arc(headsize / 3, -headsize / 2, headsize * 0.2, 0, 2 * Math.PI);
+            context.stroke();
+            context.closePath();
+            context.restore();
+
+            //Mouth
+            context.strokeStyle = '#000000';
+            context.save();
+            context.translate(headX, headY);
+            context.beginPath();
+            context.moveTo(-headsize / 2, headsize / 6);
+            context.lineTo(headsize / 3, headsize / 3);
+            context.stroke();
+            context.closePath();
+            context.restore();
+
+            //Body
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(headX, headY + headsize);
+            context.lineTo(headX, headY + headsize + bodyLength);
+            context.stroke();
+            context.closePath();
+
+            //Right leg
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(headX, headY + headsize + bodyLength);
+            context.lineTo(headX + legLength, headY + headsize + bodyLength + legLength);
+            context.stroke();
+            context.closePath();
+
+            //Left leg
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(headX, headY + headsize + bodyLength);
+            context.lineTo(headX - legLength, headY + headsize + bodyLength + legLength);
+            context.stroke();
+            context.closePath();
+
+            //Left arm
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(headX, headY + headsize + (bodyLength / 4));
+            context.lineTo(headX - armLength, headY + headsize + (bodyLength / 4));
+            context.stroke();
+            context.closePath();
+
+            //Right arm
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(headX, headY + headsize + (bodyLength / 4));
+            context.lineTo(headX + armLength, headY + headsize + (bodyLength / 14));
+            context.stroke();
+            context.closePath();
+
+            //drawOriginalHair(context);
+
+            for (var hairPos = 130; hairPos <= 220; hairPos += 7.5) {
+
+                var waggle = Math.random() * 20;
+                var wiggle = Math.random() * 10;
+
+                context.strokeStyle = hairColour;
+                context.save();
+                context.translate(headX, headY);
+                //left = 130
+                //right = 220
+                context.rotate(hairPos * Math.PI / 180);
+                context.beginPath();
+                context.moveTo(0 + waggle, headsize);
+                context.lineTo(0 + wiggle, headsize + hairLength);
+                context.stroke();
+                context.closePath();
+                context.restore();
+
+            }
+        }
+
+        function drawOriginalHair(context) {
+            //Hair
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(216, 37);
+            context.lineTo(199, 66);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(193, 58);
+            context.lineTo(197, 29);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(185, 49);
+            context.lineTo(180, 26);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(170, 52);
+            context.lineTo(180, 32);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(160, 49);
+            context.lineTo(163, 26);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(150, 51);
+            context.lineTo(150, 29);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(137, 44);
+            context.lineTo(136, 27);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(130, 48);
+            context.lineTo(124, 35);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(120, 51);
+            context.lineTo(115, 32);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(109, 57);
+            context.lineTo(106, 41);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(99, 60);
+            context.lineTo(95, 46);
+            context.stroke();
+            context.closePath();
+
+            context.strokeStyle = '#000000';
+            context.beginPath();
+            context.moveTo(94, 68);
+            context.lineTo(87, 51);
+            context.stroke();
+            context.closePath();
+
+        }
+
+        function drawPanel(context, width, height) {
+            var p = width / 3;//panelWidth
+            var b = 5; //border
+            for (var i = 0; i <= 3; i++) {
+                drawBox(context, i * p + b, (b / 2), p - b * 2, height - b);
+            };
+
+        }
+
+        function drawBox(context, x, y, w, h) {
+            context.beginPath();
+            context.rect(x, y, w, h);
+            context.fillStyle = 'white';
+            context.fill();
+            context.lineWidth = 3;
+            context.strokeStyle = 'black';
+            context.stroke();            
+        }
+
+        function update() {
+            var context, canvaso, text;
+            canvaso = document.getElementById('imageView');
+            context = canvaso.getContext('2d');
+            //text = document.getElementById('speech-text').value;
+
+            //context.rect(0, 0, canvaso.width, canvaso.height);
+            drawPanel(context, canvaso.width, canvaso.height);
+
+//********** First Panel
+
+            stickMan(context, 100, 200, 'Brown');
+            stickMan(context, 300, 200, 'Gold');
+
+            drawBubble(context, 10, 10, 190, 90, 10, 'BottomLeft');
+
+            context.fillStyle = "blue";
+            context.font = "bold 16px Arial";
+            context.textAlign = 'left';
+            context.fillText("My design has been ", 20, 40);
+            context.fillText("signed off", 20, 60);
+            context.fillText("by upper management", 20, 80);
+
+            drawBubble(context, 210, 10, 180, 90, 10, 'BottomLeft');
+
+            context.fillStyle = "blue";
+            context.font = "bold 16px Arial";
+            context.textAlign = 'left';
+            context.fillText("But your design ", 220, 40);
+            context.fillText("document", 220, 60);
+            context.fillText("is blank??!", 220, 80);
+
+//********** Second Panel
+
+            stickMan(context, 500, 200, 'Brown');
+            stickMan(context, 700, 200, 'Gold');
+
+            drawBubble(context, 450, 10, 275, 110, 10, 'BottomRight');
+
+            context.fillStyle = "blue";
+            context.textAlign = 'left';
+            context.fillText("And instead of a system diagram, ", 455, 40);
+            context.fillText("you've scanned your ", 455, 60);
+            context.fillText("butt over and over again", 455, 80);
+
+//********** Third Panel
+
+            stickMan(context, 900, 200, 'Brown');
+
+            stickMan(context, 1100, 200, 'Gold');
+
+            drawBubble(context, 950, 10, 205, 96, 10, 'BottomLeft');
+
+            context.fillStyle = "blue";
+            context.font = "bold 16px Arial";
+            context.textAlign = 'left';
+            context.fillText("You and I just ", 965, 40);
+            context.fillText("have a different ", 965, 60);
+            context.fillText("definition of done-done", 965, 80);
+
+            context.fillStyle = "grey";
+            context.font = "14px Arial";
+            context.fillText("AndThatsGoodRight.com", 1025, 427);
+
+            //"Lucida Console", Monaco, monospace
+            context.rotate(-Math.PI/2);
+            context.textAlign = "Left";
+            context.fillStyle = "black";
+            context.font = "7px Lucida Console";
+            context.fillText("'Best Design ever' © 2014-10-06", -438, 402.5);
+
+        }
+
+        window.onload = function () { update(); };
+        window.setInterval('update()', 5000);
+
+        
+    </script>
+
+
+
+
+</head>
+<body>
+    <div id="canvas-container">
+        <canvas id="imageView" width="1200" height="440">
+        </canvas>
+    </div>
+
+<ul class="nav">
+<li><a href="/1/">|&lt;</a></li>
+<li><a rel="prev" href="/3/" accesskey="p">&lt; Prev</a></li>
+<li><a rel="next" href="#" accesskey="n">Next &gt;</a></li>
+<li><a href="/">&gt;|</a></li>
+</ul>
+    
+</body>
+</html>
