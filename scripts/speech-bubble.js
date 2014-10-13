@@ -4,7 +4,7 @@ function drawBubble(ctx, x, y, w, h, radius, hook) {
     var r = x + w;
     var b = y + h;
 
-    if ("|TopLeft|TopRight|BottomLeft|BottomRight|".indexOf(hook) === -1) {
+    if ("|TopLeft|TopRight|BottomLeft|BottomRight|BottomRightIn|BottomLeftIn|".indexOf(hook) === -1) {
         hook = "TopLeft";
     }
 
@@ -24,14 +24,22 @@ function drawBubble(ctx, x, y, w, h, radius, hook) {
     ctx.lineTo(r - radius, y);
     ctx.quadraticCurveTo(r, y, r, y + radius);
     ctx.lineTo(r, y + h - radius);
-    ctx.quadraticCurveTo(r, b, r - radius, b);
+    ctx.quadraticCurveTo(r, b, r - radius , b);
     if (hook === "BottomRight") {
         ctx.lineTo(r - radius / 2, b + 10);
         ctx.lineTo(r - radius * 2, b);
     }
+    if (hook === "BottomRightIn") {
+    ctx.lineTo(r - 20 - radius / 2, b + 10);
+    ctx.lineTo(r - radius * 2, b );
+    }
     if (hook === "BottomLeft") {
         ctx.lineTo(x + radius * 2, b);
         ctx.lineTo(x + radius / 2, b + 10);
+    }
+        if (hook === "BottomLeftIn") {
+        ctx.lineTo(x + radius * 2, b);
+        ctx.lineTo(x + 20 + radius / 2, b + 10);
     }
     ctx.lineTo(x + radius, b);
     ctx.quadraticCurveTo(x, b, x, b - radius);
