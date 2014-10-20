@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cruise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cruise-config.xsd" schemaVersion="72">
+  <server artifactsdir="artifacts" commandRepositoryLocation="default" serverId="50c5d4e0-be09-4006-b0f1-1ae08cabdc6f" />
+  <pipelines group="defaultGroup">
+    <pipeline name="atgr">
+      <materials>
+        <git url="https://github.com/donvince/AndThatsGoodRight.com" />
+      </materials>
+      <stage name="defaultStage">
+        <jobs>
+          <job name="defaultJob">
+            <tasks>
+              <exec command="aws">
+                <arg>s3</arg>
+                <arg>sync</arg>
+                <arg>.\site\</arg>
+                <arg>s3://andthatsgoodright.com</arg>
+                <arg>--acl</arg>
+                <arg>public-read</arg>
+                <runif status="passed" />
+              </exec>
+            </tasks>
+          </job>
+        </jobs>
+      </stage>
+    </pipeline>
+  </pipelines>
+  <environments>
+    <environment name="LocalLaptop">
+      <agents>
+        <physical uuid="d403163f-7ebf-45ac-89fe-ab7262ef053b" />
+      </agents>
+      <pipelines>
+        <pipeline name="atgr" />
+      </pipelines>
+    </environment>
+  </environments>
+  <agents>
+    <agent hostname="WL09-22695" ipaddress="192.168.0.9" uuid="d403163f-7ebf-45ac-89fe-ab7262ef053b" />
+  </agents>
+</cruise>
+
