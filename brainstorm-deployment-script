@@ -1,0 +1,18 @@
+Parameters
+latest episode e.g. 5
+
+
+for 1 to latest
+copy %F to Build
+
+copy scripts to build
+copy styles to build
+
+---------------------------
+
+Go linked to github
+Detects changes
+click play and choose latest revision
+go automatically picks up all the files and places in a build sub-folder {var you can use}
+Script to use that variable to upload to aws
+
