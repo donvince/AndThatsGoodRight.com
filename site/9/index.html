@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>..right? Don't Go Green</title>
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <link rel="stylesheet" type="text/css" href="../styles/simple.css" />
+    <script src="../scripts/main.js"></script>
+    <script type="text/javascript">
+
+        function update() {
+            var context, canvaso, text;
+            canvaso = document.getElementById('imageView');
+            context = canvaso.getContext('2d');
+
+            drawPanel(context, canvaso.width, canvaso.height);
+
+            //********** First Panel
+
+            stickMan(context, 100, 200, 'Brown');
+            stickMan(context, 300, 200, 'Gold');
+
+            drawBubble(context, 20, 10, 345, 125, 10, 'BottomLeftIn');
+
+            context.fillStyle = "blue";
+            context.font = "bold 16px Arial";
+            context.textAlign = 'left';
+            context.fillText("As you can see, with a team of four,",27,40);
+            context.fillText("we have 4 weeks of work remaining and ", 27, 60);
+            context.fillText("if it all goes well we should ship", 27, 80);   
+            context.fillText("by the deadline", 27, 100); 
+
+
+            //********** Second Panel
+
+            stickMan(context, 500, 200, 'Brown');
+            stickMan(context, 700, 200, 'Gold');
+
+            drawBubble(context, 460, 10, 280, 110, 10, 'BottomRightIn');
+
+            context.fillStyle = "blue";
+            context.textAlign = 'left';
+            context.fillText("Brilliant. As we’re on track,", 475, 40);
+            context.fillText("I can take two of your guys", 475, 60); 
+            context.fillText("and throw them onto the next ", 475, 80);
+            context.fillText("project", 475, 100);
+
+            //********** Third Panel
+
+            stickMan(context, 900, 200, 'Brown');
+
+            stickMan(context, 1100, 200, 'Gold');
+
+
+            drawBubble(context, 890, 10, 270, 110, 10, 'BottomLeft');
+
+            context.fillStyle = "blue";
+            context.font = "bold 16px Arial";
+            context.textAlign = 'left';
+            context.fillText("I'm glad my lack of ", 900, 40);
+            context.fillText("incompetence will result in ", 900, 60);
+            context.fillText("2 projects failing ", 900, 80);
+            context.fillText("instead of 1", 900, 100); 
+            
+            
+
+            context.fillStyle = "grey";
+            context.font = "14px Arial";
+            context.fillText("AndThatsGoodRight.com", 1025, 427);
+
+            //"Lucida Console", Monaco, monospace
+            context.rotate(-Math.PI/2);
+            context.textAlign = "Left";
+            context.fillStyle = "black";
+            context.font = "7px Lucida Console";
+            context.fillText("'Don't Go Green' © 2014-11-17", -438, 402.5);
+
+        }
+
+        window.onload = function () { update(); };
+        window.setInterval('update()', 5000);
+
+
+
+// Tech Lead: “As you can see, with a team of four, we have 4 weeks of work remaining and if it all goes well we should ship by the deadline”
+// PM: “Brilliant. As we’re on track, I can take two of your guys and throw them onto the next project”
+//Tech Lead: I'm glad my lack of incompetence will result in 2 projects failing instead of 1
+    </script>
+
+
+
+</head>
+<body>
+    <div id="canvas-container">
+        <canvas id="imageView" width="1200" height="440">
+        </canvas>
+    </div>
+
+<ul class="nav">
+<li><a href="/1/">|&lt;</a></li>
+<li><a rel="prev" href="/8/" accesskey="p">&lt; Prev</a></li>
+<li><a rel="next" href="#" accesskey="n">Next &gt;</a></li>
+<li><a href="/">&gt;|</a></li>
+</ul>
+
+</body>
+</html>
