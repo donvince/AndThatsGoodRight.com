@@ -44,12 +44,12 @@ li
 {
     display: inline;
     list-style-type: none;
-    padding-right: 20px;
+    padding-right: 2px;
 }
 ul.nav 
 {
     margin-left: auto;
     margin-right: auto;
-    width: 25em
+    width: 27em
 
 }
