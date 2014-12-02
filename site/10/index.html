@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>..right? Don't Go Green</title>
+    <link rel="icon" type="image/png" href="../favicon.png" />
+    <link rel="stylesheet" type="text/css" href="../styles/simple.css" />
+    <script src="../scripts/main.js"></script>
+    <script type="text/javascript">
+
+        function update() {
+            var context, canvaso, text;
+            canvaso = document.getElementById('imageView');
+            context = canvaso.getContext('2d');
+
+            drawPanel(context, canvaso.width, canvaso.height);
+
+
+//            Rc: you didn't code what I designed
+//Lc:your design didn't look like English so I used google to translate and an app for clothing monkeys seemed to fit the requirements best.
+
+            //********** First Panel
+
+            stickMan(context, 100, 200, 'Brown');
+            stickMan(context, 300, 200, 'Gold');
+
+            drawBubble(context, 20, 10, 345, 125, 10, 'BottomLeftIn');
+
+            context.fillStyle = "blue";
+            context.font = "bold 16px Arial";
+            context.textAlign = 'left';
+            context.fillText("I spent more than my usual ",27,40);
+            context.fillText("10 minutes on this design,", 27, 60); 
+            context.fillText("and you didn't even code what I asked for! ", 27, 80); 
+
+
+            //********** Second Panel
+
+            stickMan(context, 500, 200, 'Brown');
+            stickMan(context, 700, 200, 'Gold');
+
+            drawBubble(context, 460, 10, 320, 110, 10, 'BottomRightIn');
+
+            context.fillStyle = "blue";
+            context.textAlign = 'left';
+            context.fillText("It wasn't in any languages I've", 475, 40);
+            context.fillText(" ever seen. I used google to translate", 475, 60); 
+            context.fillText("and an app for clothing monkeys", 475, 80);
+            context.fillText("seemed to fit the requirements best", 475, 100);
+
+            //********** Third Panel
+
+            stickMan(context, 900, 200, 'Brown');
+
+            stickMan(context, 1100, 200, 'Gold');
+
+
+            drawBubble(context, 890, 10, 270, 110, 10, 'BottomRightIn');
+
+            context.fillStyle = "blue";
+            context.font = "bold 16px Arial";
+            context.textAlign = 'left';
+            context.fillText("On a totally separate subject", 900, 40);
+            context.fillText("what size jeans do you wear? ", 900, 60);
+            
+            
+
+            context.fillStyle = "grey";
+            context.font = "14px Arial";
+            context.fillText("AndThatsGoodRight.com", 1025, 427);
+
+            //"Lucida Console", Monaco, monospace
+            context.rotate(-Math.PI/2);
+            context.textAlign = "Left";
+            context.fillStyle = "black";
+            context.font = "7px Lucida Console";
+            context.fillText("'Don't Go Green' © 2014-11-17", -438, 402.5);
+
+        }
+
+        window.onload = function () { update(); };
+        window.setInterval('update()', 5000);
+
+
+
+// Tech Lead: “As you can see, with a team of four, we have 4 weeks of work remaining and if it all goes well we should ship by the deadline”
+// PM: “Brilliant. As we’re on track, I can take two of your guys and throw them onto the next project”
+//Tech Lead: I'm glad my lack of incompetence will result in 2 projects failing instead of 1
+    </script>
+
+
+
+</head>
+<body>
+    <div id="canvas-container">
+        <canvas id="imageView" width="1200" height="440">
+        </canvas>
+    </div>
+
+<ul class="nav">
+<li><a href="/1/">|&lt;</a></li>
+<li><a rel="prev" href="/8/" accesskey="p">&lt; Prev</a></li>
+<li><a rel="next" href="#" accesskey="n">Next &gt;</a></li>
+<li><a href="/">&gt;|</a></li>
+</ul>
+
+</body>
+</html>
